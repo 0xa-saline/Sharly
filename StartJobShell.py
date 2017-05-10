@@ -54,12 +54,7 @@ def main():
                 pylib_cmd+=",./"+l
             else:
                 local_file.append(l)
-    file_cmd +=","+ ",".join(local_file)
-    #get schema files
-    schema_list=os.listdir("./schema")
-    for s in range(len(schema_list)):
-        schema_list[s]="./schema/"+schema_list[s]
-    file_cmd+=",".join(schema_list)
+    file_cmd +=",".join(local_file)
     cmd=start_cmd+pylib_cmd+file_cmd+jarlib_cmd+" ./main.py %s"%options.jobname
     print "[+]CMD:",cmd
     start_job=os.popen(cmd)
