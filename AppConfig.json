@@ -1,88 +1,41 @@
-{"global": {
-  "zookeeper": "zookeeper:2181"
-},
+{
   "App":{
-    "FromKafkaToKafkaJob":{
-      "app_name":"FromKafkaToKafka",
-      "in_topic":"in_topic_name",
+    "FromKafkaToHdfsJob":{
+      "app_name":"FromKafkaToHdfsJob",
+      "in_topic":"http_test",
       "in_topic_partitions":5,
-      "schema_file":"schema_file_name",
-      "out_topic":"out_topic_name",
-      "kafka_producer":["producer_host:6667","producer_host:6667"]
+      "kafka_producer":["ip1:6667","ip2:6667"],
+      "namenode":"ip",
+      "zookeeper": "ip:2181",
+      "savedir":"/http_test/http_test.json"
     },
-    "FromKafkaToEsJob":{
-      "app_name":"FromKafkaToEs",
-      "in_topic":"in_topic_name",
-      "in_topic_partitions":5,
-      "schema_file":"schema_file_name",
-      "index_name":"index_name",
-      "type_name":"type:name",
-      "elasticsearch":{
-        "connect": {
-            "hosts": ["es_host", "es_host"],
-            "maxsize": 25
-        },
-        "index": {
-            "number_of_shards": 6,
-            "number_of_replicas": 1
-        }
-      }
+    "HmmTrainJob": {
+            "app_name": "HmmTrainJob",
+            "namenode": "ip",
+            "namenode_model": "ip",
+            "data_dir": "/http_test/http_test.json",
+            "model_dir": "/http_test/model_test/",
+            "min_train_num": 10
     },
-    "WebDetectionJob":{
-      "app_name":"WebDetectionJob",
-      "in_topic":"topicname",
-      "in_topic_partitions":5,
-      "schema_file":"schema_file_name",
-      "index_name":"index_name",
-      "type_name":"type:name",
-      "elasticsearch":{
-        "connect": {
-            "hosts": ["es_host", "es_host"],
-            "maxsize": 25
-        },
-        "index": {
-            "number_of_shards": 6,
-            "number_of_replicas": 1
-        }
-      }
-    },
-    "WebshellDetectionJob":{
-      "app_name":"WebshellDetectionJob",
-      "in_topic":"avro-log-cnpc-kelaihttp",
-      "in_topic_partitions":5,
-      "schema_file":"schema_file_name",
-      "index_name":"index_name",
-      "type_name":"type:name",
-      "elasticsearch":{
-        "connect": {
-            "hosts": ["es_host", "es_host"],
-            "maxsize": 25
-        },
-        "index": {
-            "number_of_shards": 6,
-            "number_of_replicas": 1
-        },
-        "neo4j":{
-          "bolt":"bolt://ip:7687",
-          "user":"neo4j",
-          "password":"pass"
-        }
-      }
-    },
-    "FromHdfsJob":{
-      "app_name":"FromHdfsJob",
-      "index_name":"netflow-hdfs",
-      "type_name":"netflow",
-      "elasticsearch":{
-        "connect": {
-            "hosts": ["host1:9200", "host2:9200"],
-            "maxsize": 25
-        },
-        "index": {
-            "number_of_shards": 6,
-            "number_of_replicas": 1
-        }
-      }
+    "HmmDetectionJob": {
+            "app_name": "HmmDetectionJob",
+            "namenode": "ip",
+            "model_dir": "/http_test/model_test.jsonmodel2017-05-04_13-01.json",
+            "in_topic": "http_test",
+            "in_topic_partitions": 5,
+            "zookeeper": "ip:2181",
+            "index_name": "web_detection_alarm",
+            "type_name": "hmm_detection_alarm",
+            "elasticsearch": {
+                "connect": {
+                    "hosts": ["ip", "ip"],
+                    "maxsize": 25
+                },
+                "index": {
+                    "number_of_shards": 6,
+                    "number_of_replicas": 1
+                }
+            }
     }
   }
 }
