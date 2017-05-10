@@ -2,20 +2,13 @@
 ====
 Agent
 ---
-
 ### 说明
-
 在Linux系统下监控网卡流量，提取HTTP请求数据、HTTP响应数据头，可以输出到屏幕、ES、Kafka。
-
 ### 环境
-
 TcpFlow
-
 python2.7
-
 ### 使用
 详见python2.7 agent.py --help
-
 Job
 ---
 ### 环境
