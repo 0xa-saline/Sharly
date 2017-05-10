@@ -3,17 +3,17 @@
 Agent
 ---
 * 说明
-在Linux系统下监控网卡流量，提取HTTP请求数据、HTTP响应数据头，可以输出到屏幕、ES、Kafka。
+> 在Linux系统下监控网卡流量，提取HTTP请求数据、HTTP响应数据头，可以输出到屏幕、ES、Kafka。
 * 环境
-TcpFlow
+> TcpFlow
 python2.7
 * 使用
-详见python2.7 agent.py --help
+> 详见python2.7 agent.py --help
 
 Job
 ---
 * 环境
-Kafka、Hadoop、ES、Spark、Zookeeper
+> Kafka、Hadoop、ES、Spark、Zookeeper
 * 使用
 1. 修改AppConfig.json，将对应的环境配置修改为自己的。
 
